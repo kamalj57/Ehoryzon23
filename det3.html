@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Payment Idea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sec.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+<body>
+    <div id="box">
+    <div class="container">
+        <h1 class="header"><i class="fa-sharp fa-solid fa-lightbulb"></i>Ideathon</h1>
+      </div>
+    </div>
+
+    <div class="lab">
+        <form>
+            <input type="text" name="name" placeholder='Name'><br><br>
+            <input type="text" name="rolno" placeholder='RollNo'><br><br>
+            <input type="text" name="department" placeholder='Department'><br><br>
+            <input type="text" name="aname" placeholder='Name2'><br><br>
+            <input type="text" name="arolno" placeholder='RollNo2'><br><br>
+            <input type="text" name="adepartment" placeholder='department2'><br><br>
+            <input type="submit" id="sub">
+        </form>
+    </div>
+        <script>
+            let form = document.querySelector("form");
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                document.querySelector("#sub").value = "Submitted";
+                let data = new FormData(form);
+                fetch('https://script.google.com/macros/s/AKfycbxOty0ZhD4aKdm0gffvogmQMryhfPjTNKdMJ0WoSdq8USzIewllpAJ0DfR7kOKA2qUB/exec', {
+                        method: "POST",
+                        body: data
+                    })
+                    .then(res => res.text())
+                    .then(data => {
+                        document.querySelector("#msg").innerHTML = data;
+                        document.querySelector("#sub").value = "Submit"
+                    });
+            })
+        </script>
+
+          <div class="qr">
+            <img alt=""class="group" src="images/qcode.png">
+            </div>
+            <div class="scan">
+                <p><h1>Scan QR Code</h1></h1Scan></p>
+            </div>
+            <div class="det">
+                <p>Please fill the details first and scan the QR for payment,<br>Otherwise your payment will not be valid and registerd</p>
+            </div>
+            <script>
+                const txt1=document.getElementById('fname');
+                const txt2=document.getElementById('lname');
+                const txt3=document.getElementById('dname');
+                const txt4=document.getElementById('f2name');
+                const txt5=document.getElementById('l2name');
+                const txt6=document.getElementById('d2name');
+                const sub1=document.getElementById('sub1');
+                const pa1=document.getElementById('pa');
+                function sub() {
+                    pa1.innerHTML = txt1.value;
+                }
+                 sub1.addEventListener('click',sub);
+
+            </script> 
+            <div>
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLSdU_nFNjz1-NoR1LRw3yu19n6cGw4K_g_-1OHAIqTl-dZvvrw/viewform?usp=sf_link">
+                <button class="glab" type="submit">Gfrom Link</button></form>
+            </div>
+            <div class="gfor">
+                <p>After the payment please fill the Google form</p>
+            </div>
+            
+</body>
+</head>
+</html>
